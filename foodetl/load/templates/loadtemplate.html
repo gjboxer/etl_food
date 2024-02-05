@@ -1,0 +1,70 @@
+<!-- templates/food_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+{% for food in foods %}
+    <h1>{{ food.name }}</h1>
+    <p><strong>Description:</strong> {{ food.description }}</p>
+    <p><strong>FDC ID:</strong> {{ food.fdc_id }}</p>
+
+    <h2>Food Nutrients</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nutrient in food.food_nutrients %}
+                <tr>
+                    <td>{{ nutrient.name }}</td>
+                    <td>{{ nutrient.amount }}</td>
+                    <td>{{ nutrient.unit_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+</body>
+</html>
