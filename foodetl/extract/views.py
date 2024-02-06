@@ -87,9 +87,8 @@ class ExtractView(APIView):
             receipe_raw_data = RecipeView.scrape_receipe_data(food_name_list)
             print("receipe_raw_data",receipe_raw_data)
             
+
             reversed_url = reverse('load')
             return HttpResponseRedirect(reversed_url)
         else:
             return Response({'message': 'Data not loaded'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        #
